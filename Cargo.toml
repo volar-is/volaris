@@ -4,6 +4,6 @@ version = "0.0.0"
 edition = "2021"
 author = "Jake <jake@brxken.dev>"
 license = "BSD-2-Clause"
-description = "A Rust-based state-of-the-art encryption CLI, desktop and mobile app. Privacy comes first."
+description = "A Rust-based state-of-the-art encryption CLI"
 
 [dependencies]
