@@ -10,13 +10,13 @@
 name: "Code analysis with `clippy` and `fmt`"
 
 on:
-  push:
-    paths:
-      - '**.rs'
-      - Cargo.toml
-      - Cargo.lock
-      - .github/workflows/analyze.yml
-      - 'rust-toolchain.toml'
+  # push:
+  #   paths:
+  #     - '**.rs'
+  #     - Cargo.toml
+  #     - Cargo.lock
+  #     - .github/workflows/analyze.yml
+  #     - 'rust-toolchain.toml'
   pull_request:
     paths:
       - '**.rs'
@@ -63,7 +63,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
