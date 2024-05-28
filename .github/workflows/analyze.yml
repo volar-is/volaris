@@ -51,10 +51,10 @@ jobs:
       - name: Cargo fmt
         run: cargo fmt --all --check
 
-      - name: Install required cargo
+      - name: Install required tooling for clippy
         run: cargo install clippy-sarif sarif-fmt
 
-      - name: Run rust-clippy
+      - name: Run `clippy`
         run:
           cargo clippy
           --all-features
