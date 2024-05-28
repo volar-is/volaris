@@ -45,8 +45,8 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
-          components: clippy, fmt
-          #override: true
+          components: clippy, rustfmt
+          override: true
 
       - name: Cargo fmt
         run: cargo fmt --all --check
