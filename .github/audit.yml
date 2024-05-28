@@ -22,8 +22,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: bot/cargo-audit
-          title: "[Bot] Audit fixes"
-          commit-message: Cargo audit fixes
+          title: "security: audit fixes"
+          commit-message: "security: fix cargo audit flags"
           body: >
             Updates to Cargo.toml and/or Cargo.lock with security fixes.
           labels: automated pr
