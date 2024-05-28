@@ -1,29 +1,27 @@
-name: Audit project
+name: "Audit Dependencies"
 on:
-  workflow_dispatch:
-  pull_request:
   push:
-    branches:
-      - main
+    paths:
+      # Run if workflow changes
+      - '.github/workflows/audit.yml'
+      # Run on changed dependencies
+      - '**/Cargo.toml'
+      - '**/Cargo.lock'
+      # Run if the configuration file changes
+      - '**/audit.toml'
+  # Rerun periodicly to pick up new advisories
+  schedule:
+    - cron: '0 0 * * *'
+  # Run manually
+  workflow_dispatch:
 
 jobs:
   audit:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-
+      contents: read
+      issues: write
     steps:
-      - name: Run cargo audit fix
-        uses: simonhyll/cargo-audit@v1
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: bot/cargo-audit
-          title: "security: audit fixes"
-          commit-message: "security: fix cargo audit flags"
-          body: >
-            Updates to Cargo.toml and/or Cargo.lock with security fixes.
-          labels: automated pr
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/audit@v1
+        name: Audit Rust Dependencies
