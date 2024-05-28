@@ -5,3 +5,7 @@ version = 3
 [[package]]
 name = "volaris"
 version = "0.0.0"
+
+[[package]]
+name = "volaris-core"
+version = "0.0.0"
