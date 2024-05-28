@@ -1,5 +1,5 @@
 # Volaris
 
-A Rust-based state-of-the-art encryption CLI, desktop and mobile app.
+A modern, secure Rust-based encryption tool for desktops, CLI interfaces and even mobile devices.
 
 **Privacy and security come first**.
