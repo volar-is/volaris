@@ -1,9 +1,6 @@
-[package]
-name = "volaris"
-version = "0.0.0"
-edition = "2021"
+[workspace]
+members = ["crates/*"]
+
+[workspace.package]
 author = "Jake <jake@brxken.dev>"
 license = "BSD-2-Clause"
-description = "A Rust-based state-of-the-art encryption CLI"
-
-[dependencies]

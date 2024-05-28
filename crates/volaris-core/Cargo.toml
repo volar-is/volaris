@@ -1,0 +1,9 @@
+[package]
+name = "volaris-core"
+version = "0.0.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+description = "The core cryptography behind Volaris"
+
+[dependencies]

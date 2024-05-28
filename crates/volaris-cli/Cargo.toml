@@ -1,0 +1,9 @@
+[package]
+name = "volaris"
+version = "0.0.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+description = "A Rust file encryption tool"
+
+[dependencies]
