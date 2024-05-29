@@ -7,7 +7,7 @@ Volaris is an encryption tool designed to prioritize privacy and security. Built
 
 ## Features
 
-- **Cross-Platform Support**: Available on desktop, CLI, and mobile devices.
+- **Cross-Platform Support**: Available on desktop, CLIs, and mobile devices.
 - **Rust-Based Security**: Leveraging Rust’s safety and performance features.
 - **Modern Encryption Standards**: Uses the latest encryption algorithms to ensure data security.
 
