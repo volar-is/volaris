@@ -2,8 +2,6 @@
 name = "volaris-core"
 version = "0.0.1"
 edition = "2021"
-authors.workspace = true
-license.workspace = true
 description = "The core cryptography behind Volaris"
 readme = "README.md"
 license = "BSD-2-Clause"
