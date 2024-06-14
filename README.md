@@ -1,5 +1,5 @@
 # Volaris
-![GitHub License](https://img.shields.io/github/license/volarisapp/Volaris) ![GitHub Issues](https://img.shields.io/github/issues/volarisapp/Volaris) ![GitHub Stars](https://img.shields.io/github/stars/volarisapp/Volaris)
+![GitHub License](https://img.shields.io/github/license/volar-is/Volaris) ![GitHub Issues](https://img.shields.io/github/issues/volar-is/Volaris) ![GitHub Stars](https://img.shields.io/github/stars/volar-is/Volaris)
 
 ## Introduction
 
