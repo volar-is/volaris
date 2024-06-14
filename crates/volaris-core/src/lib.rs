@@ -12,12 +12,12 @@
 //!
 //! ## Who uses Volaris-Core?
 //!
-//! This library is implemented by [Volaris](https://github.com/volarisapp/Volaris), a secure multi-interface file
+//! This library is implemented by [Volaris](https://github.com/volar-is/Volaris), a secure multi-interface file
 //! encryption utility.
 //!
-//! Volaris-Core makes it easy to integrate the Volaris format into your own projects (and if there's a feature that you'd like to see, please don't hesitate to [open a Github issue](https://github.com/volarisapp/Volaris/issues)).
+//! Volaris-Core makes it easy to integrate the Volaris format into your own projects (and if there's a feature that you'd like to see, please don't hesitate to [open a Github issue](https://github.com/volar-is/Volaris/issues)).
 //!
-//! You can read more about Volaris, Volaris-Core and the technical details [in the project's main documentation](https://github.com/volarisapp/volaris/readme.md)!
+//! You can read more about Volaris, Volaris-Core and the technical details [in the project's main documentation](https://github.com/volar-is/volaris/readme.md)!
 //!
 //! ## Thank you!
 //!
