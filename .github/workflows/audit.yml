@@ -1,16 +1,29 @@
-# A routine check to see if there are any Rust-specific security vulnerabilities 
-# in the repo we should be aware of.
-
-name: audit
+name: "Audit Dependencies"
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      # Run if workflow changes
+      - '.github/workflows/audit.yml'
+      # Run on changed dependencies
+      - '**/Cargo.toml'
+      - '**/Cargo.lock'
+      # Run if the configuration file changes
+      - '**/audit.toml'
+  # Rerun periodicly to pick up new advisories
   schedule:
-    - cron: "0 0 * * 1" # every Monday
+    - cron: '0 0 * * *'
+  # Run manually
+  workflow_dispatch:
+
 jobs:
   audit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/audit-check@v1.2.0
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/audit@v1
+        name: Audit Rust Dependencies
         with:
           token: ${{ secrets.TOKEN }}
