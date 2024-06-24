@@ -146,7 +146,7 @@ pub fn get_matches() -> clap::ArgMatches {
 
     Command::new("volaris")
         .version(clap::crate_version!())
-        .author("brxken128 <brxken128@tutanota.com>")
+        .author("brxken128 <brxken128@tutanota.com>, greendoescode <green@apolga.com>")
         .about("Secure, fast and modern command-line encryption of files.")
         .subcommand_required(true)
         .arg_required_else_help(true)
