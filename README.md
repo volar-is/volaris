@@ -1,5 +1,5 @@
 # Volaris
-![GitHub License](https://img.shields.io/github/license/volarisapp/Volaris) ![GitHub Issues](https://img.shields.io/github/issues/volarisapp/Volaris) ![GitHub Stars](https://img.shields.io/github/stars/volarisapp/Volaris)
+![GitHub License](https://img.shields.io/github/license/volar-is/Volaris) ![GitHub Issues](https://img.shields.io/github/issues/volar-is/Volaris) ![GitHub Stars](https://img.shields.io/github/stars/volar-is/Volaris)
 
 ## Introduction
 
@@ -10,6 +10,13 @@ Volaris is an encryption tool designed to prioritize privacy and security. Built
 - **Cross-Platform Support**: Available on desktop, CLI, and mobile devices.
 - **Rust-Based Security**: Leveraging Rust’s safety and performance features.
 - **Modern Encryption Standards**: Uses the latest encryption algorithms to ensure data security.
+
+## Security
+
+Volaris uses modern cryptographic AEADs (XChaCha20-Poly1305 + AES-256-GCM),
+with audited backends to ensure the safety and integrity of
+your data. It's extremely easy to use Volaris before uploading your files to a
+cloud service, to ensure that no prying eyes can read them.
 
 ## Current Status
 

@@ -16,12 +16,10 @@ own risk
 
 ## Who uses volaris-Core?
 
-This library is implemented by [volaris](https://github.com/volarisapp/volaris), a
-secure multi-interface file encryption utility.
+This library is implemented by [volaris](https://github.com/volarisapp/volaris), a secure multi-interface file encryption utility.
 
 Volaris-Core makes it easy to integrate the volaris format into your own projects
-(and if there's a feature that you'd like to see, please don't hesitate to
-[open a Github issue](https://github.com/volarisapp/volaris/issues)).
+(and if there's a feature that you'd like to see, please don't hesitate to [open a Github issue](https://github.com/volarisapp/volaris/issues)).
 
 ## Features
 
@@ -78,8 +76,7 @@ let decrypted_data = cipher.decrypt(&nonce, encrypted_data.as_slice()).unwrap();
 assert_eq!(secret, decrypted_data);
 ```
 
-You can read more about volaris, Volaris-Core and the technical details
-[in the project's main documentation](https://github.com/volarisapp/volaris/)!
+You can read more about volaris, Volaris-Core and the technical details [in the project's main documentation](https://github.com/volarisapp/volaris/)!
 
 ## Thank you!
 
