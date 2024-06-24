@@ -11,6 +11,13 @@ Volaris is an encryption tool designed to prioritize privacy and security. Built
 - **Rust-Based Security**: Leveraging Rust’s safety and performance features.
 - **Modern Encryption Standards**: Uses the latest encryption algorithms to ensure data security.
 
+## Security
+
+Volaris uses modern cryptographic AEADs (XChaCha20-Poly1305 + AES-256-GCM),
+with audited backends to ensure the safety and integrity of
+your data. It's extremely easy to use Volaris before uploading your files to a
+cloud service, to ensure that no prying eyes can read them.
+
 ## Current Status
 
 Volaris is currently in development. We are working hard to bring you a secure and user-friendly encryption tool. Stay tuned for updates and releases.
