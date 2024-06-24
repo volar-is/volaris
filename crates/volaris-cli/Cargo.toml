@@ -1,9 +1,29 @@
 [package]
-name = "volaris"
-version = "0.0.0"
+name = "volaris-cli"
+version = "0.0.1"
+authors = ["brxken128 <brxken128@tutanota.com>", "greendoescode <green@apolga.com>"]
+readme = "README.md"
 edition = "2021"
-authors.workspace = true
-license.workspace = true
-description = "A Rust file encryption tool"
+description = "Secure, fast and authenticated command-line encryption of files with modern algorithms and an audited encryption backend."
+keywords = ["encryption", "utility", "file", "command-line", "secure"]
+categories = ["cryptography", "command-line-utilities"]
+repository = "https://github.com/volar-is/volaris/tree/master/volaris"
+homepage = "https://github.com/volar-is/volaris"
+license = "BSD-2-Clause"
+
+# this is for sites other than crates.io, who may still use it
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
+blake3 = "1.3.3"
+rand = "0.8.5"
+
+domain = { package = "volaris-domain", version = "0.0.1", path = "../volaris-domain" }
+core = { package = "volaris-core", path = "../volaris-core", version = "0.0.1" }
+
+clap = { version = "3.2.21", features = ["cargo"] }
+anyhow = "1.0.65"
+
+zip = { version = "0.6.3", default-features = false, features = ["zstd"] }
+rpassword = "7.2"
