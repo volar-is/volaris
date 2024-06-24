@@ -2,5 +2,5 @@
 members = ["crates/*"]
 
 [workspace.package]
-authors = ["Jake <jake@brxken.dev>"]
+authors = ["Jake <jake@brxken.dev>", "Leo <me@leohanney.com>"]
 license = "BSD-2-Clause"
