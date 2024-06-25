@@ -1,0 +1,23 @@
+[package]
+name = "volaris-tools"
+description = "The libary that contains all workings and tools for volaris."
+version = "0.0.2"
+edition = "2021"
+license = "BSD-2-Clause"
+keywords = ["encryption", "secure"]
+categories = ["cryptography", "encoding", "data-structures"]
+repository = "https://github.com/volar-is/volaris/tree/master/crates/volaris-tools"
+homepage = "https://github.com/volar-is/volaris"
+readme = "README.md"
+authors = ["brxken128 <brxken128@tutanota.com", "greendoescode <green@apolga.com>"]
+
+[badges]
+maintenance = { status = "actively-developed" }
+
+[dependencies]
+corecrypto = { package = "volaris-crypto", path = "../volaris-crypto", version = "0.0.1" }
+
+rand = "0.8.5"
+blake3 = "1.3.3"
+walkdir = "2.3.2"
+zip = { version = "0.6.3", default-features = false, features = ["zstd"] }

@@ -12,9 +12,9 @@ pub fn hash_stream(files: &[String]) -> Result<()> {
         let mut input_file = std::fs::File::open(input)
             .with_context(|| format!("Unable to open file: {}", input))?;
 
-        let hash = domain::hash::execute(
-            domain::hasher::Blake3Hasher::default(),
-            domain::hash::Request {
+        let hash = tools::hash::execute(
+            tools::hasher::Blake3Hasher::default(),
+            tools::hash::Request {
                 reader: RefCell::new(&mut input_file),
             },
         )?;

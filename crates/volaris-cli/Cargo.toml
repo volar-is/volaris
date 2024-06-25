@@ -1,6 +1,6 @@
 [package]
 name = "volaris-cli"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["brxken128 <brxken128@tutanota.com>", "greendoescode <green@apolga.com>"]
 readme = "README.md"
 edition = "2021"
@@ -19,8 +19,8 @@ maintenance = { status = "actively-developed" }
 blake3 = "1.3.3"
 rand = "0.8.5"
 
-domain = { package = "volaris-domain", version = "0.0.1", path = "../volaris-domain" }
-core = { package = "volaris-core", path = "../volaris-core", version = "0.0.1" }
+tools = { package = "volaris-tools", version = "0.0.1", path = "../volaris-tools" }
+corecrypto = { package = "volaris-crypto", path = "../volaris-crypto", version = "0.0.1" }
 
 clap = { version = "3.2.21", features = ["cargo"] }
 anyhow = "1.0.65"

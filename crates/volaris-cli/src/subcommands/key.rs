@@ -3,8 +3,8 @@ use crate::global::states::Key;
 use crate::global::states::PasswordState;
 use crate::global::structs::KeyManipulationParams;
 use anyhow::{Context, Result};
-use core::header::Header;
-use core::header::HeaderVersion;
+use corecrypto::header::Header;
+use corecrypto::header::HeaderVersion;
 use std::cell::RefCell;
 use std::fs::OpenOptions;
 use std::io::Seek;
@@ -45,7 +45,7 @@ pub fn add(input: &str, params: &KeyManipulationParams) -> Result<()> {
 
     let raw_key_new = params.key_new.get_secret(&PasswordState::Validate)?;
 
-    domain::key::add::execute(domain::key::add::Request {
+    tools::key::add::execute(tools::key::add::Request {
         handle: &input_file,
         hash_algorithm: params.hashing_algorithm,
         raw_key_old,
@@ -89,7 +89,7 @@ pub fn change(input: &str, params: &KeyManipulationParams) -> Result<()> {
 
     let raw_key_new = params.key_new.get_secret(&PasswordState::Validate)?;
 
-    domain::key::change::execute(domain::key::change::Request {
+    tools::key::change::execute(tools::key::change::Request {
         handle: &input_file,
         hash_algorithm: params.hashing_algorithm,
         raw_key_old,
@@ -127,7 +127,7 @@ pub fn delete(input: &str, key_old: &Key) -> Result<()> {
 
     let raw_key_old = key_old.get_secret(&PasswordState::Direct)?;
 
-    domain::key::delete::execute(domain::key::delete::Request {
+    tools::key::delete::execute(tools::key::delete::Request {
         handle: &input_file,
         raw_key_old,
     })?;
@@ -162,7 +162,7 @@ pub fn verify(input: &str, key: &Key) -> Result<()> {
 
     let raw_key = key.get_secret(&PasswordState::Direct)?;
 
-    domain::key::verify::execute(domain::key::verify::Request {
+    tools::key::verify::execute(tools::key::verify::Request {
         handle: &input_file,
         raw_key,
     })?;

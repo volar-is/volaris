@@ -3,8 +3,8 @@ use std::process::exit;
 use std::sync::Arc;
 
 use anyhow::Result;
-use core::header::{HeaderType, HEADER_VERSION};
-use core::primitives::{Algorithm, Mode};
+use corecrypto::header::{HeaderType, HEADER_VERSION};
+use corecrypto::primitives::{Algorithm, Mode};
 
 use crate::global::states::{HashMode, HeaderLocation, PasswordState};
 use crate::{
@@ -14,7 +14,7 @@ use crate::{
         structs::{CryptoParams, PackParams},
     },
 };
-use domain::storage::Storage;
+use tools::storage::Storage;
 
 use crate::cli::prompt::overwrite_check;
 
@@ -33,7 +33,7 @@ pub struct Request<'a> {
 // it erases the temporary archive afterwards, to stop any residual data from remaining
 pub fn execute(req: &Request) -> Result<()> {
     // TODO: It is necessary to raise it to a higher level
-    let stor = Arc::new(domain::storage::FileStorage);
+    let stor = Arc::new(tools::storage::FileStorage);
 
     // 1. validate and prepare options
     if req.input_file.iter().any(|f| f == req.output_file) {
@@ -92,9 +92,9 @@ pub fn execute(req: &Request) -> Result<()> {
     };
 
     // 2. compress and encrypt files
-    domain::pack::execute(
+    tools::pack::execute(
         stor.clone(),
-        domain::pack::Request {
+        tools::pack::Request {
             compress_files,
             compression_method,
             writer: output_file.try_writer()?,
