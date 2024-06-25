@@ -1,0 +1,129 @@
+name: Build and Upload
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  clippy:
+    name: clippy (ubuntu-latest, stable)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        components: clippy
+
+    - name: Restore cargo cache
+      uses: actions/cache@v2.1.7
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-stable-${{ hashFiles('Cargo.lock') }}
+
+    - name: Clippy
+      uses: actions-rs/cargo@v1
+      with:
+        command: clippy
+        args: --no-deps
+
+  check:
+    name: check (ubuntu-latest, stable)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+
+    - name: Restore cargo cache
+      uses: actions/cache@v2.1.7
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-stable-${{ hashFiles('Cargo.lock') }}
+
+    - name: Check
+      uses: actions-rs/cargo@v1
+      with:
+        command: check
+        args: --release
+
+  build:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        rust:
+          - stable
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+
+      - name: Restore cargo cache
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ matrix.os }}-cargo-${{ matrix.rust }}-${{ hashFiles('Cargo.lock') }}
+
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+
+      - if: matrix.os != 'windows-latest'
+        name: Strip\
+        run: strip target/release/volaris-cli
+
+      - if: matrix.os == 'ubuntu-latest'
+        name: Hash the Binary
+        run: sha256sum target/release/volaris-cli
+
+      - if: matrix.os == 'ubuntu-latest'
+        name: Upload Binary as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: volaris-linux64
+          path: target/release/volaris-cli
+      - if: matrix.os == 'macos-latest'
+        name: Upload Binary as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: volaris-mac64
+          path: target/release/volaris-cli
+      - if: matrix.os == 'windows-latest'
+        name: Upload Binary as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: volaris-cli-win64
+          path: target/release/volaris-cli.exe
