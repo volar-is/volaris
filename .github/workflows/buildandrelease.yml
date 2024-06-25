@@ -113,13 +113,13 @@ jobs:
         name: Upload Binary as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: volaris-linux64
+          name: volaris-cli-linux64
           path: target/release/volaris-cli
       - if: matrix.os == 'macos-latest'
         name: Upload Binary as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: volaris-mac64
+          name: volaris-cli-mac64
           path: target/release/volaris-cli
       - if: matrix.os == 'windows-latest'
         name: Upload Binary as artifact
