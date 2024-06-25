@@ -13,10 +13,8 @@ Volaris is an encryption tool designed to prioritize privacy and security. Built
 
 ## Security
 
-Volaris uses modern cryptographic AEADs (XChaCha20-Poly1305 + AES-256-GCM),
-with audited backends to ensure the safety and integrity of
-your data. It's extremely easy to use Volaris before uploading your files to a
-cloud service, to ensure that no prying eyes can read them.
+Volaris uses modern cryptographic methods (XChaCha20-Poly1305 + AES-256-GCM), with audited backends to keep the safety of
+your data. Using Volaris before sharing your files is effortless, keeping them safe in transit.
 
 ## Current Status
 
