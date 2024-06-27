@@ -645,7 +645,7 @@ checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 
 [[package]]
 name = "volaris-cli"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "anyhow",
  "blake3",
@@ -659,7 +659,7 @@ dependencies = [
 
 [[package]]
 name = "volaris-crypto"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "aead",
  "aes-gcm",
@@ -676,7 +676,7 @@ dependencies = [
 
 [[package]]
 name = "volaris-tools"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "blake3",
  "rand",
