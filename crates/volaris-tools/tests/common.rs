@@ -1,8 +1,8 @@
-use volaris_tools::storage::{Error, FileStorage, Storage};
 use std::fs;
 use std::io::Write;
 use std::ops::Deref;
 use std::path::{Path, PathBuf};
+use volaris_tools::storage::{Error, FileStorage, Storage};
 
 pub struct TestFileStorage {
     inner: FileStorage,
