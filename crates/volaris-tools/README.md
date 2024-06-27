@@ -1,6 +1,6 @@
  ## What is it?
 
- volaris-tools is a library used for managing the corecrypto logic behind volaris, and any applications that require easy integration with the volaris format.
+ volaris-tools is a library used for managing the core logic behind volaris, and any applications that require easy integration with the volaris format.
 
  ## Security
 
@@ -10,12 +10,7 @@
 
  ## Who uses Volaris-Tools?
 
- This library is implemented by [volaris](https://github.com/volar-is/volaris), a secure command-line file
+ This library is implemented by [volaris](https://github.com/volar-is/volaris), a secure file
  encryption utility.
 
  This crate was made to separate the logic away from the end-user application.
-
- It also allows for more things to be built on top of the corecrypto functionality, such as a GUI application.
-
-
- You can read more about volaris, volaris-crypto, volaris-tools and the technical details [in the project's main documentation](https://github.com/volar-is/volaris/)!
