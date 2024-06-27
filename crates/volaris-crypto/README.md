@@ -10,7 +10,6 @@ decryption.
 
 You may find the audits for both AES-256-GCM and XChaCha20-Poly1305 on
 [the NCC Group's website](https://research.nccgroup.com/2020/02/26/public-report-rustcrypto-aes-gcm-and-chacha20poly1305-implementation-review/).
-
 ## Who uses volaris-crypto?
 
 This library is implemented by [volaris](https://github.com/volar-is/volaris), a secure multi-interface file encryption utility.
@@ -73,11 +72,7 @@ let decrypted_data = cipher.decrypt(&nonce, encrypted_data.as_slice()).unwrap();
 assert_eq!(secret, decrypted_data);
 ```
 
-You can read more about volaris, volaris-crypto and the technical details [in the project's main documentation](https://github.com/volar-is/volaris/)!
-
 ## Thank you!
 
-volaris-crypto exclusively uses AEADs provided by the
-[RustCrypto Team](https://github.com/RustCrypto), so I'd like to give them a
-huge thank you for their hard work (this wouldn't have been possible without
-them!)
+volaris-crypto uses AEADs provided by the [RustCrypto Team](https://github.com/RustCrypto)
+
