@@ -35,10 +35,7 @@ mod test {
 
 #[must_use]
 pub fn hex_encode(bytes: &[u8]) -> String {
-    bytes
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect::<String>()
+    bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
 }
 
 #[cfg(test)]
