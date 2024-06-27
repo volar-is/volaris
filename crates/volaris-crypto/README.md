@@ -76,11 +76,7 @@ let decrypted_data = cipher.decrypt(&nonce, encrypted_data.as_slice()).unwrap();
 assert_eq!(secret, decrypted_data);
 ```
 
-You can read more about volaris, volaris-crypto and the technical details [in the project's main documentation](https://github.com/volar-is/volaris/)!
-
 ## Thank you!
 
-volaris-crypto exclusively uses AEADs provided by the
-[RustCrypto Team](https://github.com/RustCrypto), so I'd like to give them a
-huge thank you for their hard work (this wouldn't have been possible without
-them!)
+volaris-crypto uses AEADs provided by the
+[RustCrypto Team](https://github.com/RustCrypto)
