@@ -1,9 +1,9 @@
 mod common;
 use common::*;
-use volaris_tools::storage::*;
 use std::fs;
 use std::io::{Read, Write};
 use std::path::PathBuf;
+use volaris_tools::storage::*;
 
 #[test]
 fn should_create_a_new_file() {
