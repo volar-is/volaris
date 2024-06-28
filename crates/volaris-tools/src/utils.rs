@@ -1,4 +1,6 @@
 // TODO(pleshevskiy): dedup these utils
+use std::fmt::Write;
+
 
 #[cfg(test)]
 mod test {
@@ -35,7 +37,11 @@ mod test {
 
 #[must_use]
 pub fn hex_encode(bytes: &[u8]) -> String {
-    bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
+    let mut result = String::new();
+    for byte in bytes {
+      write!(result, "{byte:02x}").unwrap();
+    }
+    result
 }
 
 #[cfg(test)]
