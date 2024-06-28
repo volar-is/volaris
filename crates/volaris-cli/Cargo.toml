@@ -22,7 +22,7 @@ rand = "0.8.5"
 tools = { package = "volaris-tools", version = "0.0.3", path = "../volaris-tools" }
 corecrypto = { package = "volaris-crypto", path = "../volaris-crypto", version = "0.0.3" }
 
-clap = { version = "3.2.21", features = ["cargo"] }
+clap = { version = "4.5.7", features = ["cargo"] }
 anyhow = "1.0.65"
 
 zip = { version = "0.6.3", default-features = false, features = ["zstd"] }

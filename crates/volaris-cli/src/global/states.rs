@@ -129,10 +129,10 @@ impl Key {
         params: &KeyParams,
         keyfile_descriptor: &str,
     ) -> Result<Self> {
-        let key = if sub_matches.is_present(keyfile_descriptor) && params.keyfile {
+        let key = if sub_matches.contains_id(keyfile_descriptor) && params.keyfile {
             Key::Keyfile(
                 sub_matches
-                    .value_of(keyfile_descriptor)
+                    .get_one::<&str>(keyfile_descriptor)
                     .context("No keyfile/invalid text provided")?
                     .to_string(),
             )
@@ -143,7 +143,7 @@ impl Key {
             params.autogenerate,
         ) {
             let result = sub_matches
-                .value_of("autogenerate")
+                .get_one::<&str>("autogenerate")
                 .context("No amount of words specified")?
                 .parse::<i32>();
             if let Ok(value) = result {

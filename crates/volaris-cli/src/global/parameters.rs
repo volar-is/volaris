@@ -23,18 +23,18 @@ pub fn get_params(name: &str, sub_matches: &ArgMatches) -> Result<Vec<String>> {
 }
 
 pub fn get_param(name: &str, sub_matches: &ArgMatches) -> Result<String> {
-    let value = sub_matches
-        .value_of(name)
-        .with_context(|| format!("No {} provided", name))?
-        .to_string();
+    let value = sub_matches.get_one::<String>(name)
+      .with_context(|| format!("No {} provided", name))?
+      .to_string();
     Ok(value)
-}
+  }
+  
 
 // the main parameter handler for encrypt/decrypt
 pub fn parameter_handler(sub_matches: &ArgMatches) -> Result<CryptoParams> {
     let key = Key::init(sub_matches, &KeyParams::default(), "keyfile")?;
 
-    let hash_mode = if sub_matches.is_present("hash") {
+    let hash_mode = if sub_matches.get_flag("hash") {
         //specify to emit hash after operation
         HashMode::CalculateHash
     } else {
@@ -44,9 +44,9 @@ pub fn parameter_handler(sub_matches: &ArgMatches) -> Result<CryptoParams> {
 
     let force = forcemode(sub_matches);
 
-    let erase = if sub_matches.is_present("erase") {
+    let erase = if sub_matches.get_flag("erase") {
         let result = sub_matches
-            .value_of("erase")
+            .get_one::<String>("erase")
             .context("No amount of passes specified")?
             .parse();
 
@@ -60,10 +60,10 @@ pub fn parameter_handler(sub_matches: &ArgMatches) -> Result<CryptoParams> {
         EraseMode::IgnoreFile
     };
 
-    let header_location = if sub_matches.is_present("header") {
+    let header_location = if sub_matches.get_flag("header") {
         HeaderLocation::Detached(
             sub_matches
-                .value_of("header")
+                .get_one::<String>("header")
                 .context("No header/invalid text provided")?
                 .to_string(),
         )
@@ -84,7 +84,7 @@ pub fn parameter_handler(sub_matches: &ArgMatches) -> Result<CryptoParams> {
 }
 
 pub fn hashing_algorithm(sub_matches: &ArgMatches) -> HashingAlgorithm {
-    if sub_matches.is_present("argon") {
+    if sub_matches.get_flag("argon") {
         HashingAlgorithm::Argon2id(ARGON2ID_LATEST)
     } else {
         HashingAlgorithm::Blake3Balloon(BLAKE3BALLOON_LATEST)
@@ -93,7 +93,7 @@ pub fn hashing_algorithm(sub_matches: &ArgMatches) -> HashingAlgorithm {
 
 // gets the algorithm, primarily for encrypt functions
 pub fn algorithm(sub_matches: &ArgMatches) -> Algorithm {
-    if sub_matches.is_present("aes") {
+    if sub_matches.get_flag("aes") {
         Algorithm::Aes256Gcm
     } else {
         Algorithm::XChaCha20Poly1305
@@ -101,9 +101,9 @@ pub fn algorithm(sub_matches: &ArgMatches) -> Algorithm {
 }
 
 pub fn erase_params(sub_matches: &ArgMatches) -> Result<(i32, ForceMode)> {
-    let passes = if sub_matches.is_present("passes") {
+    let passes = if sub_matches.get_flag("passes") {
         let result = sub_matches
-            .value_of("passes")
+            .get_one::<String>("passes")
             .context("No amount of passes specified")?
             .parse::<i32>();
         if let Ok(value) = result {
@@ -125,7 +125,7 @@ pub fn erase_params(sub_matches: &ArgMatches) -> Result<(i32, ForceMode)> {
 pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams)> {
     let key = Key::init(sub_matches, &KeyParams::default(), "keyfile")?;
 
-    let hash_mode = if sub_matches.is_present("hash") {
+    let hash_mode = if sub_matches.get_flag("hash") {
         //specify to emit hash after operation
         HashMode::CalculateHash
     } else {
@@ -137,17 +137,16 @@ pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams
 
     let erase = EraseMode::IgnoreFile;
 
-    let header_location = if sub_matches.is_present("header") {
+    let header_location = if sub_matches.get_flag("header") {
         HeaderLocation::Detached(
             sub_matches
-                .value_of("header")
+                .get_one::<String>("header")
                 .context("No header/invalid text provided")?
                 .to_string(),
         )
     } else {
         HeaderLocation::Embedded
     };
-
     let hashing_algorithm = hashing_algorithm(sub_matches);
 
     let crypto_params = CryptoParams {
@@ -159,7 +158,7 @@ pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams
         hashing_algorithm,
     };
 
-    let print_mode = if sub_matches.is_present("verbose") {
+    let print_mode = if sub_matches.get_flag("verbose") {
         //specify to emit hash after operation
         PrintMode::Verbose
     } else {
@@ -167,7 +166,7 @@ pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams
         PrintMode::Quiet
     };
 
-    let dir_mode = if sub_matches.is_present("recursive") {
+    let dir_mode = if sub_matches.get_flag("recursive") {
         //specify to emit hash after operation
         DirectoryMode::Recursive
     } else {
@@ -175,13 +174,13 @@ pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams
         DirectoryMode::Singular
     };
 
-    let erase_source = if sub_matches.is_present("erase") {
+    let erase_source = if sub_matches.get_flag("erase") {
         EraseSourceDir::Erase
     } else {
         EraseSourceDir::Retain
     };
 
-    let compression = if sub_matches.is_present("zstd") {
+    let compression = if sub_matches.get_flag("zstd") {
         Compression::Zstd
     } else {
         Compression::None
@@ -198,7 +197,7 @@ pub fn pack_params(sub_matches: &ArgMatches) -> Result<(CryptoParams, PackParams
 }
 
 pub fn forcemode(sub_matches: &ArgMatches) -> ForceMode {
-    if sub_matches.is_present("force") {
+    if sub_matches.get_flag("force") {
         ForceMode::Force
     } else {
         ForceMode::Prompt
