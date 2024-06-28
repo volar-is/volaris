@@ -1,7 +1,6 @@
 // TODO(pleshevskiy): dedup these utils
 use std::fmt::Write;
 
-
 #[cfg(test)]
 mod test {
     use corecrypto::primitives::{get_nonce_len, Algorithm, Mode, MASTER_KEY_LEN, SALT_LEN};
@@ -39,7 +38,7 @@ mod test {
 pub fn hex_encode(bytes: &[u8]) -> String {
     let mut result = String::new();
     for byte in bytes {
-      write!(result, "{byte:02x}").unwrap();
+        write!(result, "{byte:02x}").unwrap();
     }
     result
 }
