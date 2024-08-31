@@ -19,7 +19,7 @@ maintenance = { status = "actively-developed" }
 blake3 = "1.5.4"
 rand = "0.8.5"
 
-tools = { package = "volaris-tools", version = "0.0.3", path = "../volaris-tools" }
+tools = { package = "volaris-tools", version = "0.0.4", path = "../volaris-tools" }
 corecrypto = { package = "volaris-crypto", path = "../volaris-crypto", version = "0.0.3" }
 
 clap = { version = "4.5.16", features = ["cargo"] }
