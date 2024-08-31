@@ -1,8 +1,8 @@
 use anyhow::Result;
 use clap::ArgMatches;
 
-// this is called from main.rs
-// it gets params and sends them to the appropriate functions
+// This is called from main.rs
+// It gets params and sends them to the appropriate functions
 
 use crate::global::{
     parameters::{
@@ -25,7 +25,7 @@ pub fn encrypt(sub_matches: &ArgMatches) -> Result<()> {
     let params = parameter_handler(sub_matches)?;
     let algorithm = algorithm(sub_matches);
 
-    // stream mode is the only mode to encrypt (v8.5.0+)
+    // Stream mode is the only mode to encrypt (v8.5.0+)
     encrypt::stream_mode(
         &get_param("input", sub_matches)?,
         &get_param("output", sub_matches)?,
@@ -37,7 +37,7 @@ pub fn encrypt(sub_matches: &ArgMatches) -> Result<()> {
 pub fn decrypt(sub_matches: &ArgMatches) -> Result<()> {
     let params = parameter_handler(sub_matches)?;
 
-    // stream decrypt is the default as it will redirect to memory mode if the header says so (for backwards-compat)
+    // Stream decrypt is the default as it will redirect to memory mode if the header says so (for backwards compatibility)
     decrypt::stream_mode(
         &get_param("input", sub_matches)?,
         &get_param("output", sub_matches)?,
@@ -69,7 +69,7 @@ pub fn unpack(sub_matches: &ArgMatches) -> Result<()> {
 
     let crypto_params = parameter_handler(sub_matches)?;
 
-    let print_mode = if sub_matches.is_present("verbose") {
+    let print_mode = if sub_matches.get_flag("verbose") {
         PrintMode::Verbose
     } else {
         PrintMode::Quiet
@@ -84,9 +84,8 @@ pub fn unpack(sub_matches: &ArgMatches) -> Result<()> {
 }
 
 pub fn hash_stream(sub_matches: &ArgMatches) -> Result<()> {
-    let files: Vec<String> = if sub_matches.is_present("input") {
-        let list: Vec<&str> = sub_matches.values_of("input").unwrap().collect();
-        list.iter().map(std::string::ToString::to_string).collect()
+    let files: Vec<String> = if let Some(values) = sub_matches.get_many::<String>("input") {
+        values.map(|s| s.to_string()).collect()
     } else {
         Vec::new()
     };

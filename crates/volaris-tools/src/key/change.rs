@@ -27,7 +27,7 @@ pub fn execute<RW>(req: Request<'_, RW>) -> Result<(), Error>
 where
     RW: Read + Write + Seek,
 {
-    let (header, _) = corecrypto::header::Header::deserialize(&mut *req.handle.borrow_mut())
+    let (header, _) = Header::deserialize(&mut *req.handle.borrow_mut())
         .map_err(|_| Error::HeaderDeserialize)?;
 
     if header.header_type.version < HeaderVersion::V5 {

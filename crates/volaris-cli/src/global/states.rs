@@ -1,7 +1,3 @@
-// this file contains enums found all around the codebase
-// they act as toggles for certain features, so they can be
-// enabled if selected by the user
-
 use anyhow::{Context, Result};
 use clap::ArgMatches;
 use corecrypto::protected::Protected;
@@ -129,21 +125,18 @@ impl Key {
         params: &KeyParams,
         keyfile_descriptor: &str,
     ) -> Result<Self> {
-        let key = if sub_matches.is_present(keyfile_descriptor) && params.keyfile {
+        let key = if sub_matches.contains_id(keyfile_descriptor) && params.keyfile {
             Key::Keyfile(
                 sub_matches
-                    .value_of(keyfile_descriptor)
+                    .get_one::<String>(keyfile_descriptor)
                     .context("No keyfile/invalid text provided")?
                     .to_string(),
             )
         } else if std::env::var("VOLARIS_KEY").is_ok() && params.env {
             Key::Env
-        } else if let (Ok(true), true) = (
-            sub_matches.try_contains_id("autogenerate"),
-            params.autogenerate,
-        ) {
+        } else if sub_matches.contains_id("autogenerate") && params.autogenerate {
             let result = sub_matches
-                .value_of("autogenerate")
+                .get_one::<String>("autogenerate")
                 .context("No amount of words specified")?
                 .parse::<i32>();
             if let Ok(value) = result {

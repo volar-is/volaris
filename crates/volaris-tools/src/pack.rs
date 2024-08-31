@@ -69,7 +69,8 @@ where
             .borrow_mut();
         let mut zip_writer = zip::ZipWriter::new(BufWriter::new(&mut *tmp_writer));
 
-        let options = FileOptions::default()
+        // Explicitly specify the type parameter for `FileOptions`
+        let options: zip::write::FileOptions<'_, ()> = FileOptions::default()
             .compression_method(req.compression_method)
             .large_file(true)
             .unix_permissions(0o755);
@@ -119,7 +120,7 @@ where
     })
     .map_err(Error::Encrypt);
 
-    // 5. Finally eraze zip archive with zeros.
+    // 5. Finally erase zip archive with zeros.
     crate::overwrite::execute(crate::overwrite::Request {
         buf_capacity,
         writer: tmp_file.try_writer().map_err(|_| Error::FinishArchive)?,
@@ -131,6 +132,7 @@ where
 
     encrypt_res
 }
+
 
 #[cfg(test)]
 mod tests {
