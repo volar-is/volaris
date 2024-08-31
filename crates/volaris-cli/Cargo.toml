@@ -1,6 +1,6 @@
 [package]
 name = "volaris-cli"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["brxken128 <brxken128@tutanota.com>", "greendoescode <green@apolga.com>"]
 readme = "README.md"
 edition = "2021"
