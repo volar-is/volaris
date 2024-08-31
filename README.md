@@ -1,5 +1,7 @@
 # Volaris
 ![GitHub License](https://img.shields.io/github/license/volar-is/Volaris) ![GitHub Issues](https://img.shields.io/github/issues/volar-is/Volaris) ![GitHub Stars](https://img.shields.io/github/stars/volar-is/Volaris)
+### For a GUI version, please visit the [Volaris GUI](https://github.com/volar-is/volaris-gui) repo :)
+
 
 ## Introduction
 
