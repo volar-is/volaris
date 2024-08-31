@@ -133,7 +133,6 @@ where
     encrypt_res
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
