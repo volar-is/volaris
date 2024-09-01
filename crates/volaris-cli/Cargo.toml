@@ -5,10 +5,11 @@ authors = ["brxken128 <brxken128@tutanota.com>", "greendoescode <green@apolga.co
 readme = "README.md"
 edition = "2021"
 description = "Efficient, robust, and verified command-line file encryption."
-keywords = ["encryption", "utility", "file", "command-line", "secure"]
+keywords = ["encryption", "encryption-decryption", "aead", "volaris", "secure"]
 categories = ["cryptography", "command-line-utilities"]
-repository = "https://github.com/volar-is/volaris/tree/master/volaris"
-homepage = "https://github.com/volar-is/volaris"
+repository = "https://github.com/volar-is/volaris/tree/main/crates/volaris-cli"
+documentation = "https://docs.volaris.leohanney.com"
+homepage = "https://volaris.leohanney.com"
 license = "BSD-2-Clause"
 
 # this is for sites other than crates.io, who may still use it
