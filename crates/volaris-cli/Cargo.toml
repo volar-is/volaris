@@ -1,10 +1,10 @@
 [package]
 name = "volaris-cli"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["brxken128 <brxken128@tutanota.com>", "greendoescode <green@apolga.com>"]
 readme = "README.md"
 edition = "2021"
-description = "Efficient, robust, and verified command-line file encryption using contemporary algorithms and a audited encryption engine."
+description = "Efficient, robust, and verified command-line file encryption."
 keywords = ["encryption", "utility", "file", "command-line", "secure"]
 categories = ["cryptography", "command-line-utilities"]
 repository = "https://github.com/volar-is/volaris/tree/master/volaris"
