@@ -7,12 +7,6 @@
 
 Volaris is an encryption tool designed to prioritize privacy and security. Built using Rust, it offers a modern and efficient solution for securing your data across multiple platforms, including desktops, command-line interfaces (CLI), and mobile devices.
 
-## Features
-
-- **Cross-Platform Support**: Available on desktop, CLI, and mobile devices.
-- **Rust-Based Security**: Leveraging Rust’s safety and performance features.
-- **Modern Encryption Standards**: Uses the latest encryption algorithms to ensure data security.
-
 ## Security
 
 Volaris uses modern cryptographic methods (XChaCha20-Poly1305 + AES-256-GCM), with audited backends to keep the safety of
@@ -20,11 +14,11 @@ your data. Using Volaris before sharing your files is effortless, keeping them s
 
 ## Current Status
 
-Volaris is currently in development. We are working hard to bring you a secure and user-friendly encryption tool. Stay tuned for updates and releases.
+Volaris is currently in development.
 
 ## Contributing
 
-We welcome contributions from the community. To contribute:
+To contribute:
 
 1. Fork the repository.
 2. Create a new branch:
@@ -34,8 +28,6 @@ We welcome contributions from the community. To contribute:
 4. Push to the branch:
    `git push origin feature/YourFeature`
 5. Open a pull request.
-
-Please ensure your code adheres to our coding standards and includes appropriate tests.
 
 **Note:** This repository uses conventional commits. Please follow the [conventional commits guidelines](https://www.conventionalcommits.org/en/v1.0.0/) for your commit messages.
 
